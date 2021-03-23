@@ -328,7 +328,7 @@ let input =
 
 input = input.split("\n");
 
-let columns = input[0].split("");
+let numberOfcolumns = input[0].split("");
 // let robot =0;
 let clear = 0;
 
@@ -437,4 +437,69 @@ let clear = 0;
 // console.log(`you need to send them down rows ${numberOfRoboArray}`);
 
 //NEXT LEVEL 2
+////////////////// 1 down and 4 to the right
 
+////////////////// 2 down and right 1 or 2
+    
+    let diagnolRobotsCombined = [];
+    let robotDiag = 0;
+
+function diagnolRobotCount(){
+    let robotsOn4Array = [];
+    let row = 0;
+    let robot = 1;
+for(let k = 0; k<input.length; k++){
+        let splitUpinput = input[k].split("");
+            if(splitUpinput[row] == "#"){
+                if(splitUpinput[row+1] == "#"){
+                    if(splitUpinput[row+2] =="#"){
+                        if(splitUpinput[row+3] == "#"){
+                            robotDiag++
+                        }else{row+3};
+                    }else{row+2};
+                }else{
+                    row++;
+                }
+            }
+        row++;
+        if(row >= numberOfcolumns.length){
+            row = row - numberOfcolumns.length;
+        };
+    }
+    diagnolRobotsCombined.push(robotsOn4Array);
+    return robot;
+}
+
+let jumpingRobotsCombined = [];
+
+function diagnolandDownRobotCount(right){
+    let row = 0;
+    let robot = 1;
+    let robotsOn1Array = [];
+for(let k = 0; k<input.length; k++){
+        let splitUpinput = input[k].split("");
+            if(splitUpinput[row] == "#"){
+                robot++;
+                robotsOn1Array.push(`R${k} C${row}`);
+            }
+        row+=right;
+        if(row >= numberOfcolumns.length){
+            row = row - numberOfcolumns.length;
+        };
+        k++;
+    }
+    jumpingRobotsCombined.push(robotsOn1Array);
+    return robot;
+}
+
+
+
+diagnolandDownRobotCount(1);
+diagnolandDownRobotCount(2);
+diagnolRobotCount(4);
+diagnolRobotCount(3);
+diagnolRobotCount(2);
+diagnolRobotCount(1);
+
+console.log(diagnolRobotsCombined);
+console.log(jumpingRobotsCombined);

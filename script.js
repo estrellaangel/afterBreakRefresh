@@ -443,46 +443,46 @@ let clear = 0;
     
     let diagnolRobotsCombined = [];
     let robotDiag = 0;
+    let jumpingRobotsCombined = [];
 
 function diagnolRobotCount(){
     let robotsOn4Array = [];
     let row = 0;
-    let robot = 1;
-for(let k = 0; k<input.length; k++){
+    for(let k = 0; k<input.length; k++){
         let splitUpinput = input[k].split("");
-            if(splitUpinput[row] == "#"){
-                if(splitUpinput[row+1] == "#"){
-                    if(splitUpinput[row+2] =="#"){
-                        if(splitUpinput[row+3] == "#"){
-                            robotDiag++
-                        }else{row+3};
-                    }else{row+2};
-                }else{
-                    row++;
-                }
-            }
+        if(splitUpinput[row] == "#"){
+            if(splitUpinput[row+1] == "#"){
+                if(splitUpinput[row+2] =="#"){
+                    if(splitUpinput[row+3] == "#"){
+                        robotsOn4Array.push(`r${k} c${row}-${row+4}`);
+                        robotDiag++;
+                    }else{row+3};
+                }else{row+2};
+            }else{row++;}
+        }
         row++;
         if(row >= numberOfcolumns.length){
             row = row - numberOfcolumns.length;
         };
     }
     diagnolRobotsCombined.push(robotsOn4Array);
-    return robot;
+    return robotDiag;
 }
 
-let jumpingRobotsCombined = [];
 
-function diagnolandDownRobotCount(right){
+function diagnolandDownRobotCount(){
     let row = 0;
-    let robot = 1;
+    let robot = 0;
     let robotsOn1Array = [];
-for(let k = 0; k<input.length; k++){
+    for(let k = 0; k<input.length; k++){
         let splitUpinput = input[k].split("");
             if(splitUpinput[row] == "#"){
-                robot++;
-                robotsOn1Array.push(`R${k} C${row}`);
+                if(splitUpinput[row+1] == "#"){
+                    robot++;
+                    robotsOn1Array.push(`R${k} C${row}`);
+                }
             }
-        row+=right;
+        row++;
         if(row >= numberOfcolumns.length){
             row = row - numberOfcolumns.length;
         };
@@ -492,14 +492,13 @@ for(let k = 0; k<input.length; k++){
     return robot;
 }
 
+diagnolRobotCount();
+diagnolandDownRobotCount();
 
-
-diagnolandDownRobotCount(1);
-diagnolandDownRobotCount(2);
-diagnolRobotCount(4);
-diagnolRobotCount(3);
-diagnolRobotCount(2);
-diagnolRobotCount(1);
-
-console.log(diagnolRobotsCombined);
-console.log(jumpingRobotsCombined);
+for(let i = 0; i<jumpingRobotsCombined.length; i++){
+    for(let j = 0; j<diagnolRobotsCombined.length; j++){
+        if(jumpingRobotsCombined[i] == diagnolRobotsCombined[j]){
+            console.log('similar');
+        }
+    }
+};

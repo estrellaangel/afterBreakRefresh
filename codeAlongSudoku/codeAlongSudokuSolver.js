@@ -122,4 +122,77 @@ function getPossible(board, row, col){
     return possible;
 }
 
-console.log(getPossible(_BOARD, 3, 0));
+let updated = true;
+
+function fillInCell(board, row, col){
+    if(board[row][col] == "."){
+        let possible = getPossible(board, row, col);
+
+        if(possible.length == 1){
+            board[row][col] = possible[0];
+            updated = true;
+        }
+    }
+
+}
+
+while (updated == true){
+    updated = false;
+    for(row2 in _BOARD){
+        for(col2 in _BOARD[row2]){
+            fillInCell(_BOARD, row2, col2);
+        }
+    }
+}
+
+
+
+
+
+// let loopAgain = true;
+
+// for(row3 in _BOARD){
+//     for(col3 in _BOARD){
+//         if(_BOARD[row3][col3] == "."){
+//             loopAgain = true;
+
+//         }   
+
+//     }
+// }
+
+// function fillAll(board){
+//     let emptyrowCords = [];
+//     let emptycolCords = [];
+//     let emptySpaces = 0;
+//     for(r in board){
+//         for(c in board){
+//             if(board[r][c] == "."){
+//                 emptyrowCords.push(r);
+//                 emptycolCords.push(c);
+//                 emptySpaces++;
+//             }
+//         }
+//     }
+//     console.log(emptySpaces);
+//     console.log(emptycolCords[0]);
+//     console.log(emptyrowCords);
+//     for(let i = 0; emptySpaces > 0; i++){
+//         fillInCell(board, emptyrowCords[i], emptycolCords[i]);
+//         if(filledItIn == true){
+//             filledItIn = false;
+//             emptySpaces -=1;
+//             emptycolCords.splice(i, 1);
+//             emptyrowCords.splice(i, 1);
+//         }
+//         if(i > emptyrowCords.length){
+//             i = -1;
+//         }
+
+//     }
+    
+// }
+
+
+fillInCell(_BOARD, 0,0);
+console.table(_BOARD);

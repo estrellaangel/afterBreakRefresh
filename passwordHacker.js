@@ -2129,7 +2129,7 @@ for(indiv in rules){
 }
 
 console.log(test);
-console.log(realPasswords.length); //747
+console.log(realPasswords.length); //49681
 
 
 

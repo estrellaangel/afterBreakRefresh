@@ -1,18 +1,23 @@
-let exArray =   [2,3,0,1,4];
+let exArray =   [2, 1, 3, 4, 2, 1, 6];
 
-function jumping(arr){
-    let currentNum = arr[0];
+function jumpingIndexes(array){
     let jumps = 0;
-    for(i in arr){
-        for(let j = +i+1; j<arr.length; j++){
-            if(currentNum + 1 == arr[j]){
-                jumps++;
-                currentNum++;
+    let numberChecking = [Number(array[0])];
+    for(i in array){
+        for(nums in numberChecking){
+            let possibleIndivPlaces = [];
+            for(let j = 0; j<numberChecking[nums]; j++){
+            possibleIndivPlaces.push(array[Number(j)+Number(i)+1]);
             }
+            numberChecking = possibleIndivPlaces;
         }
-        return jumps;
+        jumps++;
+        for(num in numberChecking){
+            if(Number(numberChecking[num]) == array[(array.length -1)]){
+                return jumps;
+            } 
+        }
     }
-    
 }
 
-console.log(jumping(exArray)); 
+console.log(jumpingIndexes(exArray));

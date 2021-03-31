@@ -2006,32 +2006,32 @@ rules = rules.split(`\n`);
 posPasswords = posPasswords.split(`\n`);
 
 //QUESTION 1
-    //#region [blue]
-    // let realPasswords = [];
+    // #region [blue]
+    let realPasswords = [];
 
-    // for(indiv in rules){
-    //     let innerRulesArr = rules[indiv];
-    //     innerRulesArr = innerRulesArr.split(" ");
-    //     let innerPosArr = posPasswords[indiv];
-    //     innerPosArr = innerPosArr.split('');
-    //     // console.log(innerPosArr);
+    for(indiv in rules){
+        let innerRulesArr = rules[indiv];
+        innerRulesArr = innerRulesArr.split(" ");
+        let innerPosArr = posPasswords[indiv];
+        innerPosArr = innerPosArr.split('');
+        // console.log(innerPosArr);
 
-    //     let count = 0;
-    //     let minNmax = innerRulesArr[0];
-    //     minNmax = minNmax.split('-')
-    //     let min = minNmax[0];
-    //     let max = minNmax[1];
-    //     for(vals in innerPosArr){
-    //         if(`${innerRulesArr[1]}` == `${innerPosArr[vals]}`){
-    //             count++;
-    //         }
-    //     }
-    //     if((count > min) && (count < max)){
-    //         realPasswords.push(posPasswords[indiv]);
-    //     }
-    // }
+        let count = 0;
+        let minNmax = innerRulesArr[0];
+        minNmax = minNmax.split('-')
+        let min = minNmax[0];
+        let max = minNmax[1];
+        for(vals in innerPosArr){
+            if(`${innerRulesArr[1]}` == `${innerPosArr[vals]}`){
+                count++;
+            }
+        }
+        if((count > min) && (count < max)){
+            realPasswords.push(posPasswords[indiv]);
+        }
+    }
 
-    // console.log(realPasswords.length); //144
+    console.log(realPasswords.length); //144
     //#endregion
 
 //QUESTION 2

@@ -346,14 +346,14 @@ let clear = 0;
 
 //QUESTION 2
 // let row = 0;
-
+// console.log(numberOfcolumns)
 // for(let k = 0; k<input.length; k++){
 //         let splitUpinput = input[k].split("");
-//             if(splitUpinput[row] == "#"){
-//                 robot++;
-//             }else{
-//                 clear++;
-//             }
+//         if(splitUpinput[row] == "#"){
+//             robot++;
+//         }else{
+//             clear++;
+//         }
 //         row+=3;
 //         if(row >= numberOfcolumns.length){
 //             row = row - numberOfcolumns.length;
@@ -364,48 +364,48 @@ let clear = 0;
 
 // //QUESTION 3
 
-// let row = 0;
+let row = 0;
 
-// for(let k = 0; k<input.length; k++){
-//         let splitUpinput = input[k].split("");
-//             if(splitUpinput[row] == "#"){
-//                 robot++;
-//             }else{
-//                 clear++;
-//             }
-//         row+=1;
-//         if(row >= numberOfcolumns.length){
-//             row = row - numberOfcolumns.length;
-//         };
-//     }
+for(let k = 0; k<input.length; k++){
+        let splitUpinput = input[k].split("");
+            if(splitUpinput[row] == "#"){
+                robot++;
+            }else{
+                clear++;
+            }
+        row+=1;
+        if(row >= numberOfcolumns.length){
+            row = row - numberOfcolumns.length;
+        };
+    }
 
 // console.log(`they need ${robot+1} robots to make it`);
 
 // //QUESTION 4
 
 
-// function diagnolRobotCount(count){
-//     let row = 0;
-//     let robot = 1;
-// for(let k = 0; k<input.length; k++){
-//         let splitUpinput = input[k].split("");
-//             if(splitUpinput[row] == "#"){
-//                 robot++;
-//             }
-//         row+=count;
-//         if(row >= numberOfcolumns.length){
-//             row = row - numberOfcolumns.length;
-//         };
-//     }
-//     return robot;
-// }
+function diagnolRobotCount(count){
+    let row = 0;
+    let robot = 1;
+for(let k = 0; k<input.length; k++){
+        let splitUpinput = input[k].split("");
+            if(splitUpinput[row] == "#"){
+                robot++;
+            }
+        row+=count;
+        if(row >= numberOfcolumns.length){
+            row = row - numberOfcolumns.length;
+        };
+    }
+    return robot;
+}
 
-// let value1 = diagnolRobotCount(1);
-// let value2 = diagnolRobotCount(3);
-// let value3 = diagnolRobotCount(5);
-// let value4 = diagnolRobotCount(7);
+let value1 = diagnolRobotCount(1);
+let value2 = diagnolRobotCount(3);
+let value3 = diagnolRobotCount(5);
+let value4 = diagnolRobotCount(7);
 
-// console.log(value1+value2+value3+value4);
+console.log(+value1+value2+value3+value4);
 
 
 //NEXT LEVEL 1
@@ -434,7 +434,7 @@ for(let i = 0; i<numberOfcolumns.length; i++){
     }
 };
 
-console.log(`you need to send them down rows ${numberOfRoboArray}`);
+// console.log(`you need to send them down rows ${numberOfRoboArray}`);
 
 //NEXT LEVEL 2
 ////////////////// 1 down and 4 to the right

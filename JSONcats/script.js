@@ -72,13 +72,34 @@ function createHeader(obj){
 
 function createSection(obj){
   const CATS = obj["cats"];
-  for(let indiv in cats){
+  for(let indiv in CATS){
+    const ARTICLE = document.createElement('article');
     const CATNAME = document.createElement('h2');
-    CATNAME.textContent = `Cat Name: ${CATS[indiv]["name"]}`;
+    CATNAME.textContent = `${CATS[indiv]["name"]}'s Family`;
     const BREED = document.createElement('p');
     BREED.textContent = `Breed: ${CATS[indiv]["breed"]}`;
     const COLOR = document.createElement('p');
     COLOR.textContent = `Color: ${CATS[indiv]["color"]}`;
+    const ALLKITS = document.createElement('ul');
+
+    const KITTENS = CATS[indiv]["kittens"];
+    for(kitty in KITTENS){
+      const INDIVKIT = document.createElement('li')
+      const KITNAME = document.createElement('div');
+      KITNAME.classList.add('name')
+      KITNAME.textContent = `${KITTENS[kitty]["name"]}`;
+      const KITGEN = document.createElement('div');
+      KITGEN.textContent = `Gender: ${KITTENS[kitty]["gender"]}`;
+      INDIVKIT.appendChild(KITNAME);
+      INDIVKIT.appendChild(KITGEN);
+      ALLKITS.appendChild(INDIVKIT);
+    }
+
+    ARTICLE.appendChild(CATNAME);
+    ARTICLE.appendChild(BREED);
+    ARTICLE.appendChild(COLOR);
+    ARTICLE.appendChild(ALLKITS);
+    section.appendChild(ARTICLE);
   }
 
 }
